@@ -7,9 +7,13 @@ This implementatrion also provides unit tests.
 
 ## How to execute
 
+Run the project API `SettlementBookingSystem` in visual studio
+
 ```
 curl -X POST "https://localhost:44355/Booking" -H  "accept: text/plain" -H  "Content-Type: application/json" -d "{\"name\":\"dfsfs\",\"bookingTime\":\"10:15\"}"
 ```
+
+Run unit test by runring `SettlementBookingSystem.Application.UnitTests`
 
 ## Business
 
