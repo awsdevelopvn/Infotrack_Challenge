@@ -22,16 +22,20 @@ is 4:00pm)
 
 • API accept POST requests of the following format:
 
-```{
+```
+{
  "bookingTime": "09:30",
  "name":"John Smith"
-}```
+}
+```
 
 • Successful bookings should respond with an OK status and a booking Id in GUID form
 
-```{
+```
+{
  "bookingId": "d90f8c55-90a5-4537-a99d-c68242a6012b"
-}```
+}
+```
 
 • Requests for out of hours times should return a Bad Request status
 
