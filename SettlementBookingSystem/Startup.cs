@@ -10,6 +10,9 @@ using SettlementBookingSystem.Application;
 using SettlementBookingSystem.Application.Exceptions;
 using SettlementBookingSystem.ProblemDetails;
 using System;
+using SettlementBookingSystem.Application.Features;
+using SettlementBookingSystem.Application.Logging;
+using SettlementBookingSystem.Application.Repositories;
 
 namespace SettlementBookingSystem
 {
@@ -26,6 +29,8 @@ namespace SettlementBookingSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplication();
+            services.AddPersistenceRepositories(Configuration);
+            services.AddPersistenceServices();
 
             services.AddProblemDetails(options =>
             {
@@ -58,6 +63,14 @@ namespace SettlementBookingSystem
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(builder =>
+            {
+                builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
